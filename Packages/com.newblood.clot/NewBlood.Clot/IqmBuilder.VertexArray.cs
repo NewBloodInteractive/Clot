@@ -37,13 +37,13 @@ namespace NewBlood.Clot
             public int Size;
             public int Offset;
 
-			public static VertexArray FromType(VertexArrayType type)
+            public static VertexArray FromType(VertexArrayType type)
             {
                 var array = new VertexArray { Type = type };
 
-				switch (type)
+                switch (type)
                 {
-				case VertexArrayType.TexCoord:
+                case VertexArrayType.TexCoord:
                     array.Size   = 2;
                     array.Format = VertexArrayFormat.Single;
                     break;
@@ -53,7 +53,7 @@ namespace NewBlood.Clot
                     array.Format = VertexArrayFormat.Single;
                     break;
                 case VertexArrayType.Tangent:
-					array.Size   = 4;
+                    array.Size   = 4;
                     array.Format = VertexArrayFormat.Single;
                     break;
                 case VertexArrayType.Color:
@@ -67,7 +67,7 @@ namespace NewBlood.Clot
                 return array;
             }
 
-			public void Write(BinaryWriter writer)
+            public void Write(BinaryWriter writer)
             {
                 writer.Write((int)Type);
                 writer.Write(Flags);

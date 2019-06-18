@@ -5,7 +5,7 @@ namespace NewBlood.Clot
 {
     public partial class IqmBuilder
     {
-		class TextTable
+        class TextTable
         {
             readonly List<byte> table;
             readonly Dictionary<string, int> indices;
