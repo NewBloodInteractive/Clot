@@ -140,7 +140,7 @@ namespace NewBlood.Clot
                 {
                     var translate = CoordinateHelper.UnityToQuake(keyFrames[b].Translate);
                     var rotate    = CoordinateHelper.UnityToQuake(keyFrames[b].Rotate);
-                    var scale     = CoordinateHelper.UnityToQuake(keyFrames[b].Scale);
+                    var scale     = CoordinateHelper.UnityToQuake(keyFrames[b].Scale, isScale: true);
 
                     channels[f, b][0] = translate.x;
                     channels[f, b][1] = translate.y;
@@ -271,11 +271,9 @@ namespace NewBlood.Clot
 
             foreach (var triangle in Triangles)
             {
-                // The winding order differs between Unity and Quake,
-                // so we need to add the triangle indices in reverse.
-                writer.Write(triangle.VertexC);
-                writer.Write(triangle.VertexB);
                 writer.Write(triangle.VertexA);
+                writer.Write(triangle.VertexB);
+                writer.Write(triangle.VertexC);
             }
 
             header.AdjacencyOffset = (int)writer.BaseStream.Position;
@@ -369,7 +367,7 @@ namespace NewBlood.Clot
                 writer.Write(parent);
                 writer.Write(CoordinateHelper.UnityToQuake(bone.Translate));
                 writer.Write(CoordinateHelper.UnityToQuake(bone.Rotate));
-                writer.Write(CoordinateHelper.UnityToQuake(bone.Scale));
+                writer.Write(CoordinateHelper.UnityToQuake(bone.Scale, isScale: true));
             }
         }
 
