@@ -89,7 +89,7 @@ class ExportSample
                 var submesh       = new Submesh
                 {
                     Name          = sharedMesh.name + " Submesh " + i,
-                    TriangleIndex = iqm.Triangles.Count / 3,
+                    TriangleIndex = iqm.Triangles.Count,
                     TriangleCount = triangleCount
                 };
 
